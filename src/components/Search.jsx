@@ -1,17 +1,6 @@
 import React from "react";
 
-import ShowTeamButton from "./ShowTeamButton.jsx";
-import { Link } from "react-router-dom";
-
-const Search = ({
-  text,
-  setText,
-  fullTeam,
-  setIsShowTeam,
-  team,
-  setModalIsOpen,
-}) => {
-  console.log(fullTeam);
+const Search = ({ text, setText, fullTeam, team, setModalIsOpen }) => {
   return (
     <form className=" ">
       <label
@@ -47,12 +36,6 @@ const Search = ({
           onChange={(e) => setText(e.target.value)}
         />
       </div>
-      {/*<ShowTeamButton*/}
-      {/*  team={team}*/}
-      {/*  isShowTeam={isShowTeam}*/}
-      {/*  setShowTeam={setIsShowTeam}*/}
-      {/*/>*/}
-      {/*<Link to="/form">*/}
       <button
         type="button"
         className={`w-32 h-8 rounded-md mt-4 ${
@@ -65,7 +48,6 @@ const Search = ({
           ? `Show Team (${team?.length})`
           : `Selected  (${team?.length})`}
       </button>
-      {/*</Link>*/}
     </form>
   );
 };

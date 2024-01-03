@@ -16,7 +16,6 @@ const SelectedPokemonCard = ({
     <div className=" flex ring-2 w-full ring-teal-300 rounded-md  bg-blue-200 hover:ring-4 hover:ring-teal-500 hover:bg-blue-300 cursor-pointer">
       {isEmpty.length ? (
         <img
-          // className="m-auto"
           src={pokemon.sprites["front_default"]}
           alt=""
           width={width}

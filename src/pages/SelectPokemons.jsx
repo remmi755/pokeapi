@@ -43,7 +43,6 @@ const SelectPokemons = () => {
   };
 
   const addToTeam = async (pokemon) => {
-    // const newMember = await fetchSinglePokemon(pokemonName);
     const isInTeam = team?.find((member) => member.name === pokemon.name);
 
     if (team?.length < fullTeam && !isInTeam) {
@@ -58,8 +57,6 @@ const SelectPokemons = () => {
     setModalTeamIsOpen(true);
   };
 
-  console.log(pokemon);
-  console.log("team :", team);
   return (
     <div className="h-[100vh]">
       <div className="px-10 py-2">

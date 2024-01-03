@@ -1,9 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import UserForm from "./pages/UserForm.jsx";
-import Team from "./pages/Team.jsx";
-import { useForm } from "react-hook-form";
+import React from "react";
 import SelectPokemons from "./pages/SelectPokemons.jsx";
 import Header from "./components/Header.jsx";
 
@@ -14,12 +10,6 @@ function App() {
   // };
 
   // const isEmpty = Object.keys(pokemon);
-
-  // const showTeam = () => {
-  //   if (isValid && team.length === fullTeam) {
-  //     setIsShowTeam(true);
-  //   }
-  // };
 
   return (
     <>
