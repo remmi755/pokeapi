@@ -1,19 +1,47 @@
 import React from "react";
+import "../../App.css";
+import cn from "classnames";
+
+import IconStar from "../Icons/IconStar";
+import ChevronDown from "../Icons/ChevronDown";
 
 export interface ButtonProps {
+  type: string;
   text: string;
-  type?: "primary" | "secondary";
+  variant: string;
+  size: string;
+  disabled?: Boolean;
   onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, type = "primary", onClick }) => {
-  const buttonClasses =
-    type === "primary"
-      ? "bg-blue-500 hover:bg-blue-600 text-white"
-      : "bg-gray-200 hover:bg-gray-300 text-black";
+const Button: React.FC<ButtonProps> = ({
+  type,
+  disabled,
+  text,
+  size,
+  variant,
+  onClick,
+}) => {
+  const btnClass = cn(`button px-2`, `button-${size} button-${variant}`);
+
+  const children = (text: string) => {
+    return (
+      <div className={`flex justify-between items-center `}>
+        <IconStar />
+        <p className="px-1">{text}</p>
+        <ChevronDown />
+      </div>
+    );
+  };
+
   return (
-    <button className={`px-4 py-2 rounded ${buttonClasses}`} onClick={onClick}>
-      {text}
+    <button
+      disabled={disabled}
+      type={type}
+      className={btnClass}
+      onClick={onClick}
+    >
+      {children(text)}
     </button>
   );
 };

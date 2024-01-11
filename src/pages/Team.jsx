@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PokemonCard from "../components/PokemonCard.jsx";
 import SelectedPokemonCard from "../components/SelectedPokemonCard.jsx";
+import Button from "../components/Button/Button.tsx";
+// import button from "../components/Button/Button.js";
 
 const Team = ({ team, setTeam }) => {
   const [selectedPokemon, setSelectedPokemon] = useState("");
@@ -27,8 +29,8 @@ const Team = ({ team, setTeam }) => {
             </li>
           ))}
       </ul>
-      {team.length !== 0 ? (
-        <div className="text-white flex gap-3 pt-4 border-t-2">
+      {team.length !== 0 && selectedPokemon ? (
+        <div className="bg-white rounded-md p-4 flex gap-3 border-t-2">
           {selectedPokemon ? (
             <>
               <div className="flex-auto w-100">
@@ -40,15 +42,24 @@ const Team = ({ team, setTeam }) => {
                   removePokemon={removePokemon}
                 />
               </div>
-              <button className="flex-initial w-32 h-8 bg-[#5d57c9]">
-                Cancel
-              </button>
-              <button
-                className="flex-initial w-32 h-8 bg-[#5d57c9]"
+              <div className=""></div>
+              <Button type="reset" text="Cancel" variant="text" size="xl" />
+              <Button
+                type="button"
+                text="Save"
+                variant="primary"
+                size="xl"
                 onClick={() => setSelectedPokemon("")}
-              >
-                Save
-              </button>
+              />
+              {/*<button className="flex-initial w-32 h-8 bg-[#5d57c9]">*/}
+              {/*  Cancel*/}
+              {/*</button>*/}
+              {/*<button*/}
+              {/*  className="flex-initial w-32 h-8 bg-[#5d57c9]"*/}
+              {/*  onClick={() => setSelectedPokemon("")}*/}
+              {/*>*/}
+              {/*  Save*/}
+              {/*</button>*/}
             </>
           ) : (
             ""

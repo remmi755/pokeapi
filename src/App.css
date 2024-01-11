@@ -2,44 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  App{
-    @apply flex items-center justify-center min-h-screen bg-gray-50
-  }
-  .btn {
-    @apply flex gap-2 items-center justify-center py-2 px-4 font-semibold shadow-md rounded-lg
-  }
-  .btn.btn-light {
-    @apply bg-white text-gray-500
-  }
-  .btn.btn-danger {
-    @apply text-gray-500 bg-red-600 shadow-red-400/40
-  }
-  .modal {
-    @apply fixed top-0 left-0 w-full h-full bg-gray-400/75 overflow-hidden overflow-y-auto z-50
-  }
-  .modal-wrapper {
-    @apply absolute top-0 left-0 flex justify-center items-center w-full min-h-full
-  }
-  .modal-content {
-    @apply relative m-5 w-max p-8 rounded-2xl bg-[#182237] translate-y-[-50px] transition-opacity ease-in duration-300
-  }
-  .modal-close-button {
-    @apply absolute top-9 right-6 w-[30px] h-[30px] p-0 bg-transparent
-  }
-}
-
 #root {
   min-width: 960px;
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  background: #151c2c;
+  /*background: #151c2c;*/
   --bgSoft: #182237;
   --text: white;
   --textSoft: #b7bac1;
 }
-
 
 * {
   padding: 0;
@@ -56,3 +28,111 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@layer components {
+  App{
+    @apply flex items-center justify-center min-h-screen bg-gray-50
+  }
+  .btn {
+    @apply flex gap-2 items-center justify-center py-2 px-4 font-semibold shadow-md rounded-lg
+  }
+
+  .modal {
+    @apply fixed top-0 left-0 w-full h-full bg-gray-400/75 overflow-hidden overflow-y-auto z-50
+  }
+  .modal-wrapper {
+    @apply absolute top-0 left-0 flex justify-center items-center w-full min-h-full
+  }
+  .modal-content {
+    @apply relative m-5 w-max p-8 rounded-2xl bg-[#182237] translate-y-[-50px] transition-opacity ease-in duration-300
+  }
+
+  /*.modal-content {*/
+  /*  @apply relative m-5 w-max p-8 rounded-2xl bg-white text-gray-500 translate-y-[-50px] transition-opacity ease-in duration-300*/
+  /*}*/
+  .modal-close-button {
+    @apply absolute top-9 right-6 w-[30px] h-[30px] p-0 bg-transparent
+  }
+}
+
+.button {
+  @apply border-0 rounded-lg outline-none
+}
+
+/*variants*/
+
+.button-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-30 focus:border-2 focus:border-blue-600
+}
+
+.button-secondary {
+  @apply bg-green-600 text-white hover:bg-green-500 disabled:opacity-30 focus:border-2 focus:border-green-600
+}
+
+.button-outline {
+  @apply text-blue-600 border border-blue-600 hover:bg-blue-100 disabled:opacity-30 focus:border-2 focus:border-blue-600
+}
+
+.button-text {
+  @apply text-black hover:text-blue-600 hover:bg-blue-100 disabled:text-blue-600 disabled:opacity-30 focus:border-2 focus:border-blue-600
+}
+
+/*sizes*/
+
+
+.button-xs {
+  @apply h-5 text-xs
+}
+
+.button-sm {
+  @apply h-6 text-sm
+}
+
+
+.button-base {
+  @apply h-8 text-base
+}
+
+.button-lg {
+  @apply h-10 text-lg
+}
+
+.button-xl {
+  @apply h-12 text-xl
+}
+
+/*input*/
+
+.input {
+  @apply h-10 w-[400px] text-gray-700 border rounded-md py-3 px-7 my-2 outline-none
+}
+
+/*styling*/
+
+.input-styling-default{
+  @apply border-gray-500 hover:border-blue-600 hover:border-2 focus:border-blue-600 focus:border-2 disabled:border-none disabled:bg-blue-100 disabled:opacity-60
+}
+
+.input-styling-hover{
+  @apply border-blue-600 border-2
+}
+
+.input-styling-focus{
+  @apply border-blue-600 border-2
+}
+
+.input-styling-filled{
+  @apply border-gray-500
+}
+
+.input-styling-validation{
+  @apply border-red-600 border-2
+}
+
+.input-styling-disabled{
+  @apply border-none bg-blue-100 opacity-60
+}
+
+
+
+

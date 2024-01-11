@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "../components/Button/Button.tsx";
 
 const UserForm = ({ showTeam }) => {
   const {
@@ -19,8 +20,8 @@ const UserForm = ({ showTeam }) => {
     return false;
   }
 
-  console.log("err :", Boolean(errors.name));
-  console.log(isValid);
+  // console.log("err :", Boolean(errors.name));
+  // console.log(isValid);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className=" ">
       <div className="flex flex-col gap-8">
@@ -81,13 +82,23 @@ const UserForm = ({ showTeam }) => {
           <span className="text-red-500">{errors?.lastname.message}</span>
         )}
       </div>
-      <button
-        className="h-8 ring-1 ring-gray-300 rounded-md bg-[#5d57c9] w-32 mt-8"
-        type="submit"
-        onClick={isValid ? () => showTeam() : ""}
-      >
-        Send
-      </button>
+      <div className="mt-4">
+        <Button
+          type="submit"
+          text="Send"
+          variant="primary"
+          size="base"
+          onClick={isValid ? () => showTeam() : ""}
+        />
+      </div>
+
+      {/*<button*/}
+      {/*  className="h-8 ring-1 ring-gray-300 rounded-md bg-[#5d57c9] w-32 mt-8"*/}
+      {/*  type="submit"*/}
+      {/*  onClick={isValid ? () => showTeam() : ""}*/}
+      {/*>*/}
+      {/*  Send*/}
+      {/*</button>*/}
     </form>
   );
 };

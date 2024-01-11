@@ -57,6 +57,13 @@ const SelectPokemons = () => {
     setModalTeamIsOpen(true);
   };
 
+  // const handleModal = () => {
+  //   console.log("click");
+  //   setModalFormIsOpen(!modalFormIsOpen);
+  // };
+
+  console.log(modalFormIsOpen);
+
   return (
     <div className="h-[100vh]">
       <div className="px-10 py-2">
@@ -65,8 +72,9 @@ const SelectPokemons = () => {
           setText={setText}
           setIsShowTeam={setIsShowTeam}
           isShowTeam={isShowTeam}
+          // handleModal={handleModal}
           team={team}
-          setModalIsOpen={setModalFormIsOpen}
+          setModalFormIsOpen={setModalFormIsOpen}
           fullTeam={fullTeam}
         />
         <section className="flex mt-4">

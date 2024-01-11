@@ -11,7 +11,7 @@ const ListPokemons = ({ pokemons, text, showPokemon }) => {
       }
     });
 
-  console.log(filteredData);
+  // console.log(filteredData);
 
   return (
     <ul className="flex flex-1 flex-col ring-1 ring-teal-200 max-h-[500px] overflow-y-auto bg-[#182237] rounded-md cursor-pointer">
