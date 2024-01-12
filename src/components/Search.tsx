@@ -1,26 +1,24 @@
-import React from "react";
-import Button from "../components/Button/Button.tsx";
-import Input from "./Input/Input.tsx";
-import {
-  EyeIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/16/solid/index.js";
+import * as React from "react";
+import Button from "../components/Button/Button";
+import Input from "./Input/Input";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid/index.js";
 
 const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
   return (
-    <form className=" ">
-      <div className="flex justify-center">
+    <div>
+      <div
+        className="flex justify-center"
+        onChange={(e) => setText(e.target.value)}
+      >
         <Input
-          // disabled={true}
           id="search"
           type="search"
           label="Label"
           value={text}
-          styling="all"
+          styling="default"
           placeholder="Search"
           iconStart={<MagnifyingGlassIcon />}
-          // iconEnd={<EyeIcon />}
-          onChange={(e) => setText(e.target.value)}
+          // onChange={(e) => setText(e.target.value)}
         />
       </div>
 
@@ -57,38 +55,22 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
       {/*    onChange={(e) => setText(e.target.value)}*/}
       {/*  />*/}
       {/*</div>*/}
-      <div className="mt-8">
+      <div className="mt-6">
         <Button
-          disabled={team.length !== fullTeam}
           type="button"
           size="base"
-          text={`Total (${team?.length})`}
+          text={
+            team.length !== fullTeam
+              ? `Selected (${team?.length})`
+              : "Show Team"
+          }
           variant={team.length === fullTeam ? "secondary" : "primary"}
           onClick={
             team?.length === fullTeam ? () => setModalFormIsOpen(true) : null
           }
-          // onClick={() => setModalFormIsOpen(true)}
-          // onClick={() => console.log("Clicked")}
-          // onClick={handleModal}
         />
-        {/*<button type="button" onClick={() => console.log("Eeee")}>*/}
-        {/*  Click me*/}
-        {/*</button>*/}
       </div>
-
-      {/*<button*/}
-      {/*  type="button"*/}
-      {/*  className={`w-32 h-8 rounded-md mt-4 ${*/}
-      {/*    team?.length === fullTeam ? "bg-green-500" : "bg-[#5d57c9]"*/}
-      {/*  } focus:border-sky-500 shadow-sm`}*/}
-      {/*  // onClick={() => setIsShowTeam(!isShowTeam)}*/}
-      {/*  onClick={team?.length === fullTeam ? () => setModalIsOpen(true) : ""}*/}
-      {/*>*/}
-      {/*  {team?.length === fullTeam*/}
-      {/*    ? `Show Team (${team?.length})`*/}
-      {/*    : `Selected  (${team?.length})`}*/}
-      {/*</button>*/}
-    </form>
+    </div>
   );
 };
 

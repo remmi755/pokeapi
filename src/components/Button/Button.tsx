@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import "../../App.css";
 import cn from "classnames";
 
@@ -10,7 +10,7 @@ export interface ButtonProps {
   text: string;
   variant: string;
   size: string;
-  disabled?: Boolean;
+  disabled?: boolean;
   onClick?: () => void;
 }
 

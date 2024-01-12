@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import ListPokemons from "../components/ListPokemons.jsx";
-import PokemonCard from "../components/PokemonCard.jsx";
-import Search from "../components/Search.jsx";
+import ListPokemons from "./ListPokemons.jsx";
+import PokemonCard from "./PokemonCard.jsx";
+import Search from "./Search.tsx";
 import axios from "axios";
 import Team from "./Team.jsx";
-import Modal from "../components/Modal.jsx";
+import Modal from "./Modal.jsx";
 import UserForm from "./UserForm.jsx";
 
 const SelectPokemons = () => {
@@ -66,7 +66,7 @@ const SelectPokemons = () => {
 
   return (
     <div className="h-[100vh]">
-      <div className="px-10 py-2">
+      <div className="px-10">
         <Search
           text={text}
           setText={setText}
@@ -83,7 +83,7 @@ const SelectPokemons = () => {
             text={text}
             showPokemon={showPokemon}
           />
-          <div className="flex flex-1 ring-1 ring-teal-200 justify-center w-96 h-[500px] rounded-r-md bg-[#182237]">
+          <div className="flex flex-1 ring-1 ring-teal-200 justify-center w-96 h-[485px] rounded-r-md bg-[#182237]">
             {pokemon ? (
               <PokemonCard
                 pokemon={pokemon}
@@ -92,7 +92,7 @@ const SelectPokemons = () => {
                 fullTeam={fullTeam}
               />
             ) : (
-              <h1 className="text-teal-500 text-5xl justify-center font-bold flex items-center h-[500px] ">
+              <h1 className="text-fuchsia-500 text-5xl justify-center font-bold flex items-center h-[500px] ">
                 {" "}
                 Your selected Pokemon
               </h1>

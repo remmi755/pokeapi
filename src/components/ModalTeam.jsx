@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Team from "../pages/Team.jsx";
+import Team from "./Team.jsx";
 
 const ModalTeam = ({ open, onClose, children }) => {
   return (

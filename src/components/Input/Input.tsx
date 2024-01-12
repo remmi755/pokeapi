@@ -1,28 +1,27 @@
-import React from "react";
-import {
-  ChevronDownIcon,
-  EyeIcon,
-  InformationCircleIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/16/solid";
+import * as React from "react";
+import { InformationCircleIcon } from "@heroicons/react/16/solid";
 import cn from "classnames";
+import { useForm } from "react-hook-form";
+import { ReactNode } from "react";
 
 export interface InputProps {
+  name: string;
   label?: string;
   type: string;
   placeholder?: string;
   errorMsg?: string;
   id: string;
+  iconStart: ReactNode;
+  iconEnd?: ReactNode;
   value?: string;
   styling: string;
-  disabled?: Boolean;
-  onChange?: () => void;
+  disabled?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<InputProps> = ({
   label,
   placeholder,
-  errorMsg,
   type,
   id,
   value,
@@ -31,19 +30,35 @@ const Input: React.FC<InputProps> = ({
   disabled,
   iconEnd,
   onChange,
-  children,
 }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onChange",
+  });
+
   const styleInformation = cn(
     "w-max",
-    `${styling}` === "validation" ? "text-red-700" : "text-gray-500"
+    errors[id] ? "text-red-500" : "text-gray-500"
   );
 
   const styleIconStart = cn(
-    `${styling}` === "validation" ? "text-red-700" : "text-gray-700",
+    errors[id] ? "text-red-500" : "text-gray-700",
     "absolute w-4 h-4 top-11 inset-y-3.5 start-2 mt-0.5"
   );
+
+  console.log("errorsInput :", errors);
+  console.log("isValidInput :", isValid);
+
+  function onSubmit(data) {
+    console.log(data);
+    return false;
+  }
+
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="w-[400px] h-[100px] relative flex items-center justify-cente">
         <div className="absolute w-4 h-4 text-gray-500 inset-y-3.5">
           <div className="flex items-center gap-1 w-[200px] text-black ">
@@ -52,35 +67,38 @@ const Input: React.FC<InputProps> = ({
               <InformationCircleIcon width={14} />
             </div>
           </div>
-          <div className={styleIconStart}>
-            {/*<MagnifyingGlassIcon />*/}
-            {iconStart}
-          </div>
-
-          {children}
-          <div className="absolute w-4 h-4 top-11 left-96 -ml-3">
-            {iconEnd}
-            {/*<EyeIcon />*/}
-          </div>
+          <div className={styleIconStart}>{iconStart}</div>
+          <div className="absolute w-4 h-4 top-11 left-96 -ml-3">{iconEnd}</div>
           <input
             type={type}
             id={id}
             value={value}
-            disabled={disabled}
             placeholder={placeholder}
-            className={`input input-styling-${styling}`}
-            onChange={onChange}
-            // className="block w-[400px] h-10 px-4 py-3 ps-10 text-sm text-gray-900 border border-teal-300 rounded-lg bg-gray-50"
+            className={`input input-styling-${
+              errors[id] ? "validation" : styling
+            }`}
+            {...register(`${id}`, {
+              required: "Value is required.",
+              minLength: {
+                value: 2,
+                message: "MinLength 2 characters.",
+              },
+              maxLength: {
+                value: 12,
+                message: "MaxLength 12 characters.",
+              },
+              pattern: {
+                value: /^[A-Za-z]+$/i,
+                message: "This input is character only.",
+              },
+            })}
           />
           <p className={styleInformation}>
-            {`${styling}` === "validation"
-              ? "Please type a valid value"
-              : "This information is required"}
+            {errors[id] ? errors[id].message : "Enter value"}
           </p>
         </div>
       </div>
-      <p className="">{errorMsg}</p>
-    </div>
+    </form>
   );
 };
 

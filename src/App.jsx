@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import SelectPokemons from "./pages/SelectPokemons.jsx";
+import SelectPokemons from "./components/SelectPokemons.jsx";
 import Header from "./components/Header.jsx";
 
 function App() {

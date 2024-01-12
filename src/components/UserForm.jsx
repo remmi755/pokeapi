@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Button from "../components/Button/Button.tsx";
+import Button from "./Button/Button.tsx";
 
 const UserForm = ({ showTeam }) => {
   const {
@@ -20,10 +20,11 @@ const UserForm = ({ showTeam }) => {
     return false;
   }
 
-  // console.log("err :", Boolean(errors.name));
+  // console.log("errForm :", Boolean(errors.name));
+  console.log("errForm :", errors.name);
   // console.log(isValid);
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className=" ">
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-8">
         <div className="flex flex-col py-2">
           <label className="text-start ">Name</label>
@@ -31,7 +32,6 @@ const UserForm = ({ showTeam }) => {
             className={`w-[400px] h-10 text-black cursor-pointer px-4 py-3 mt-2 ring-1 ${
               errors.name ? "ring-fuchsia-500" : "ring-gray-300"
             } rounded-md `}
-            label="name"
             {...register("name", {
               required: "Name is required.",
               minLength: {
@@ -59,7 +59,6 @@ const UserForm = ({ showTeam }) => {
           <label className="text-start">Last Name</label>
           <input
             className="w-[400px] h-10 px-4 py-3 mt-2 text-black p-2 ring-1 ring-gray-300 rounded-md cursor-pointer"
-            label="lastname"
             {...register("lastname", {
               required: "Last Name is required.",
               minLength: {
