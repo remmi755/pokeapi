@@ -1,17 +1,8 @@
 import React from "react";
 
-const SelectedPokemonCard = ({
-  pokemon,
-  width,
-  height,
-  removePokemon,
-  addToTeam,
-  team,
-  fullTeam,
-}) => {
+const SelectedPokemonCard = ({ pokemon, width, height, removePokemon }) => {
   const isEmpty = Object.keys(pokemon);
 
-  console.log(team);
   return (
     <div className=" flex ring-2 w-full ring-teal-300 rounded-md  bg-blue-200 hover:ring-4 hover:ring-teal-500 hover:bg-blue-300 cursor-pointer">
       {isEmpty.length ? (
@@ -48,14 +39,6 @@ const SelectedPokemonCard = ({
           />
         </svg>
       </div>
-      {/*<button*/}
-      {/*  className={`w-32 p-2 ring-1 ring-gray-300 mt-6 rounded-md ${*/}
-      {/*    team?.length === fullTeam ? "bg-green-500" : "bg-[#5d57c9]"*/}
-      {/*  }`}*/}
-      {/*  onClick={() => addToTeam(pokemon)}*/}
-      {/*>*/}
-      {/*  {team?.length === fullTeam ? "Full Team" : " Add to Team"}*/}
-      {/*</button>*/}
     </div>
   );
 };

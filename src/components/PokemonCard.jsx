@@ -4,9 +4,6 @@ import Button from "./Button/Button.tsx";
 const PokemonCard = ({ pokemon, addToTeam, team, fullTeam }) => {
   const isEmpty = Object.keys(pokemon);
 
-  // console.log("pokemon :", pokemon);
-  // console.log("team :", team);
-
   return (
     <div className="p-2 ring-2 w-full ring-teal-300 rounded-md  bg-blue-200">
       {isEmpty.length ? (

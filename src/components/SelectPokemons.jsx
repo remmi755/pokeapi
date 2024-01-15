@@ -17,8 +17,6 @@ const SelectPokemons = () => {
   const [modalTeamIsOpen, setModalTeamIsOpen] = useState(false);
   const fullTeam = 4;
 
-  // const team = JSON.parse(localStorage.getItem("team"));
-
   useEffect(() => {
     const fetchPokemons = async () => {
       await axios
@@ -31,7 +29,6 @@ const SelectPokemons = () => {
   const fetchSinglePokemon = async (name) => {
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
     setPokemon(res.data);
-    // console.log("single :", res.data);
     return res.data;
   };
 
@@ -48,7 +45,6 @@ const SelectPokemons = () => {
     if (team?.length < fullTeam && !isInTeam) {
       const newTeam = [...team, pokemon];
       setTeam(newTeam);
-      // localStorage.setItem("team", JSON.stringify(newTeam));
     }
   };
 
@@ -56,13 +52,6 @@ const SelectPokemons = () => {
     setModalFormIsOpen(false);
     setModalTeamIsOpen(true);
   };
-
-  // const handleModal = () => {
-  //   console.log("click");
-  //   setModalFormIsOpen(!modalFormIsOpen);
-  // };
-
-  // console.log(modalFormIsOpen);
 
   return (
     <div className="h-[100vh]">
@@ -72,7 +61,6 @@ const SelectPokemons = () => {
           setText={setText}
           setIsShowTeam={setIsShowTeam}
           isShowTeam={isShowTeam}
-          // handleModal={handleModal}
           team={team}
           setModalFormIsOpen={setModalFormIsOpen}
           fullTeam={fullTeam}

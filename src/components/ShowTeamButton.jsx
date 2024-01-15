@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShowTeamButton = ({ team, isShowTeam, setShowTeam }) => {
+const ShowTeamButton = ({ team, isShowTeam }) => {
   return (
     <button
       type="button"

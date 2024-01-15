@@ -1,12 +1,7 @@
 import * as React from "react";
 import { InformationCircleIcon } from "@heroicons/react/16/solid";
 import cn from "classnames";
-import {
-  FieldErrors,
-  FieldValues,
-  useForm,
-  UseFormRegister,
-} from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { ReactNode } from "react";
 
 export interface InputProps {

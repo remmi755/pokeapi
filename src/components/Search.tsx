@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid/index.js";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
   const {
@@ -18,7 +18,7 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
   }
 
   return (
-    <div onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div
         className="flex justify-center"
         onChange={(e) => setText(e.target.value)}
@@ -47,13 +47,11 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
           }
           variant={team.length === fullTeam ? "secondary" : "primary"}
           onClick={
-            team?.length === fullTeam
-              ? () => setModalFormIsOpen(true)
-              : () => setModalFormIsOpen(false)
+            team?.length === fullTeam ? () => setModalFormIsOpen(true) : null
           }
         />
       </div>
-    </div>
+    </form>
   );
 };
 
