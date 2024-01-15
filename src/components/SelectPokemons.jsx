@@ -31,7 +31,7 @@ const SelectPokemons = () => {
   const fetchSinglePokemon = async (name) => {
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
     setPokemon(res.data);
-    console.log("single :", res.data);
+    // console.log("single :", res.data);
     return res.data;
   };
 
@@ -62,7 +62,7 @@ const SelectPokemons = () => {
   //   setModalFormIsOpen(!modalFormIsOpen);
   // };
 
-  console.log(modalFormIsOpen);
+  // console.log(modalFormIsOpen);
 
   return (
     <div className="h-[100vh]">
