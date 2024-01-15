@@ -15,6 +15,7 @@ export interface InputProps {
   iconEnd?: ReactNode;
   value?: string;
   styling: string;
+  disabled?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -28,15 +29,18 @@ const Input: React.FC<InputProps> = ({
   errors,
   name,
   iconEnd,
+  disabled,
 }) => {
   const styleInformation = cn(
     "w-max",
-    errors[name] ? "text-red-500" : "text-gray-500"
+    errors[name] && errors[name] ? "text-red-500" : "text-gray-500",
+    styling === "validation" ? "text-red-500" : ""
   );
 
   const styleIconStart = cn(
     "absolute w-4 h-4 top-11 inset-y-3.5 start-2 mt-0.5",
-    errors[name] ? "text-red-500" : "text-gray-500"
+    errors[name] && errors[name] ? "text-red-500" : "text-gray-500",
+    styling === "validation" ? "text-red-500" : ""
   );
 
   return (
@@ -52,8 +56,7 @@ const Input: React.FC<InputProps> = ({
           <div className={styleIconStart}>{iconStart}</div>
           <div className="absolute w-4 h-4 top-11 left-96 -ml-3">{iconEnd}</div>
           <input
-            type={type}
-            {...register(name, {
+            {...register(`${name}`, {
               required: "Value is required",
               minLength: {
                 value: 2,
@@ -68,11 +71,13 @@ const Input: React.FC<InputProps> = ({
                 message: "This input is character only.",
               },
             })}
+            disabled={disabled}
+            type={type}
             name={name}
             value={value}
             placeholder={placeholder}
             className={`input input-styling-${
-              errors[name] ? "validation" : styling
+              errors[name] && errors[name] ? "validation" : styling
             }`}
           />
           <p className={styleInformation}>

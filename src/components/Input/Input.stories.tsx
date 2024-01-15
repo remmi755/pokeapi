@@ -1,9 +1,12 @@
 import * as React from "react";
-import { Meta, Story } from "@storybook/react";
+import { Meta, Story, StoryFn } from "@storybook/react";
 
 import { action } from "@storybook/addon-actions";
 import Input, { InputProps } from "./Input";
 import { EyeIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { useForm } from "react-hook-form";
+import { Simulate } from "react-dom/test-utils";
+import error = Simulate.error;
 
 export default {
   title: "Components/Input",
@@ -23,24 +26,6 @@ export default {
       ],
       control: { type: "radio" },
     },
-    // disabled: {
-    //   type: Boolean,
-    //   defaultValue: "false",
-    //   options: ["true", "false"],
-    //   control: { type: "radio" },
-    // },
-    // type: {
-    //   type: "string",
-    //   defaultValue: "button",
-    //   options: ["button", "submit", "reset"],
-    //   control: { type: "radio" },
-    // },
-    // variant: {
-    //     type: "string",
-    //     defaultValue: "primary",
-    //     options: ["primary", "secondary", "outline", "text"],
-    //     control: { type: "radio" },
-    // },
     onChange: action("changed"),
   },
   parameters: {
@@ -48,10 +33,17 @@ export default {
   },
 } as Meta;
 
-const Template: Story<InputProps> = (args) => <Input {...args} />;
+const Template: StoryFn<InputProps> = (args) => {
+  const methods = useForm();
+  const { register } = methods;
+  return <Input register={register} {...args} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {
+  errors: error,
+  disabled: false,
+  name: "default",
   label: "Label",
   placeholder: "Placeholder",
   styling: "default",
@@ -61,6 +53,9 @@ Default.args = {
 
 export const Hover = Template.bind({});
 Hover.args = {
+  errors: error,
+  disabled: false,
+  name: "hover",
   label: "Label",
   placeholder: "Placeholder",
   styling: "hover",
@@ -70,6 +65,9 @@ Hover.args = {
 
 export const Focus = Template.bind({});
 Focus.args = {
+  errors: error,
+  disabled: false,
+  name: "focus",
   label: "Label",
   placeholder: "Placeholder",
   styling: "focus",
@@ -80,6 +78,9 @@ Focus.args = {
 
 export const Filled = Template.bind({});
 Filled.args = {
+  errors: error,
+  disabled: false,
+  name: "filled",
   label: "Label",
   placeholder: "Placeholder",
   styling: "default",
@@ -90,6 +91,9 @@ Filled.args = {
 
 export const Validation = Template.bind({});
 Validation.args = {
+  errors: error,
+  disabled: false,
+  name: "validation",
   label: "Label",
   placeholder: "Placeholder",
   styling: "validation",
@@ -100,6 +104,9 @@ Validation.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  disabled: true,
+  errors: error,
+  name: "disabled",
   label: "Label",
   placeholder: "Placeholder",
   styling: "disabled",

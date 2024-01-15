@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid/index.js";
-import { useForm } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 
 const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
   const {
@@ -24,10 +24,10 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
         onChange={(e) => setText(e.target.value)}
       >
         <Input
-          errors={errors}
-          type="search"
           register={register}
           name="search"
+          errors={errors}
+          type="search"
           label="Search"
           value={text}
           styling="default"

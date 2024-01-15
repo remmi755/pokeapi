@@ -22,10 +22,10 @@ const UserForm = ({ showTeam }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-6">
         <Input
-          errors={errors}
           register={register}
-          type="text"
           name="name"
+          errors={errors}
+          type="text"
           label="Name"
           iconStart={<IconStar />}
           styling="default"
@@ -33,9 +33,9 @@ const UserForm = ({ showTeam }) => {
         />
 
         <Input
-          errors={errors}
           register={register}
           name="lastname"
+          errors={errors}
           type="text"
           label="Last Name"
           iconStart={<IconStar />}
