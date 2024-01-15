@@ -13,6 +13,9 @@ const UserForm = ({ showTeam }) => {
 
   function onSubmit(data) {
     console.log(data);
+    if (isValid) {
+      showTeam();
+    }
   }
 
   return (
@@ -41,13 +44,7 @@ const UserForm = ({ showTeam }) => {
         />
       </div>
       <div className="mt-4">
-        <Button
-          type="submit"
-          text="Send"
-          variant="primary"
-          size="base"
-          onClick={isValid ? () => showTeam() : ""}
-        />
+        <Button type="submit" text="Send" variant="primary" size="base" />
       </div>
     </form>
   );

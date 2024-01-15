@@ -28,7 +28,7 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
           type="search"
           register={register}
           name="search"
-          label="Label"
+          label="Search"
           value={text}
           styling="default"
           placeholder="Search"

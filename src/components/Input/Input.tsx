@@ -5,11 +5,11 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { ReactNode } from "react";
 
 export interface InputProps {
-  name: string;
+  name?: string;
   label?: string;
   type?: string;
   placeholder?: string;
-  register: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
   errors?: string | FieldErrors;
   iconStart?: ReactNode;
   iconEnd?: ReactNode;
@@ -38,8 +38,6 @@ const Input: React.FC<InputProps> = ({
     "absolute w-4 h-4 top-11 inset-y-3.5 start-2 mt-0.5",
     errors[name] ? "text-red-500" : "text-gray-500"
   );
-
-  console.log("errors :", errors);
 
   return (
     <div>
