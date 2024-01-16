@@ -3,9 +3,11 @@ import { InformationCircleIcon } from "@heroicons/react/16/solid";
 import cn from "classnames";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { ReactNode } from "react";
+import ToolTip from "../ToolTip/ToolTip";
 
 export interface InputProps {
   name?: string;
+  toolTipInfo?: string;
   label?: string;
   type?: string;
   placeholder?: string;
@@ -20,6 +22,7 @@ export interface InputProps {
 
 const Input: React.FC<InputProps> = ({
   label,
+  toolTipInfo,
   placeholder,
   type,
   register,
@@ -50,7 +53,9 @@ const Input: React.FC<InputProps> = ({
           <div className="flex items-center gap-1 w-[200px] text-black">
             <h3 className="text-gray-500 font-bold">{label}</h3>
             <div className="text-gray-500">
-              <InformationCircleIcon width={14} />
+              <ToolTip text={toolTipInfo}>
+                <InformationCircleIcon width={14} />
+              </ToolTip>
             </div>
           </div>
           <div className={styleIconStart}>{iconStart}</div>

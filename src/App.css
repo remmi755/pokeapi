@@ -104,7 +104,7 @@ a {
 /*input*/
 
 .input {
-  @apply h-10 w-[400px] text-gray-700 border rounded-md py-3 px-7 my-2 outline-none
+  @apply h-10 w-[400px] text-gray-700 border rounded-md py-3 px-7 my-2 outline-none cursor-pointer
 }
 
 /*styling*/

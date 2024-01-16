@@ -6,7 +6,7 @@ import IconStar from "../Icons/IconStar";
 import ChevronDown from "../Icons/ChevronDown";
 
 export interface ButtonProps {
-  type: string;
+  type: "button" | "reset" | "submit";
   text: string;
   variant: string;
   size: string;
