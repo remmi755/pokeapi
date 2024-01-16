@@ -1,15 +1,72 @@
 import * as React from "react";
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useState } from "react";
+import cn from "classnames";
 
 export interface BadgeProps {
-  text: string;
-  children: ReactElement;
+  text: string | ReactElement;
+  children?: ReactElement;
   color: string;
-  iconStart?: ReactNode;
+  isIconStart?: boolean;
+  isDismiss?: boolean;
+  variant: string;
 }
 
-const Badge: React.FC<BadgeProps> = ({ children, text }) => {
-  return <div>{children}</div>;
+const Badge: React.FC<BadgeProps> = ({
+  children,
+  text,
+  color,
+  isDismiss,
+  variant,
+  isIconStart,
+}) => {
+  const [showBadge, setShowBadge] = useState(true);
+
+  const containerStyle = cn(
+    `${color === "dark" ? "bg-gray-700" : `bg-${color}-100`}`,
+    `rounded-${variant}`,
+    `w-max flex justify-center items-center rounded-md gap-2 px-2.5 py-0.5`
+  );
+
+  const textStyle = cn(`text-${color}-700`, `font-bold`);
+
+  const startCircleStyle = cn(
+    "rounded-xl w-2 h-2",
+    `${color === "dark" ? "bg-gray-100" : `bg-${color}-500`}`
+  );
+
+  return (
+    <>
+      {showBadge && (
+        <div className={containerStyle}>
+          {isIconStart && <div className={startCircleStyle}></div>}
+          <p className={textStyle}>{text}</p>
+          {children}
+          {isDismiss && (
+            <div
+              className={`text-${color}-400`}
+              onClick={() => setShowBadge(false)}
+            >
+              <svg
+                className="w-2 h-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+            </div>
+          )}
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Badge;

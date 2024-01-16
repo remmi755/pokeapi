@@ -3,6 +3,7 @@ import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid/index.js";
 import { useForm } from "react-hook-form";
+import Badge from "./Badge/Badge";
 
 const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
   const {
@@ -36,15 +37,20 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
           iconStart={<MagnifyingGlassIcon />}
         />
       </div>
-
       <div className="mt-6">
         <Button
           type="button"
           size="base"
           text={
-            team.length !== fullTeam
-              ? `Selected (${team?.length})`
-              : "Show Team"
+            team.length !== fullTeam ? (
+              // ? `Selected (${team?.length})`
+              <p className="flex gap-1">
+                Selected
+                <Badge text={team?.length} color="fuchsia" variant="xl" />
+              </p>
+            ) : (
+              "Show Team"
+            )
           }
           variant={team.length === fullTeam ? "secondary" : "primary"}
           onClick={

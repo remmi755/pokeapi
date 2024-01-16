@@ -1,10 +1,29 @@
+const colors = require("tailwindcss/colors");
+
 /** @type {import('tailwindcss').Config} */
-export default {
+
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        //just add this below and your all other tailwind colors willwork
+        ...colors,
+        indigo: colors.indigo,
+        pink: colors.pink,
+      },
+    },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern:
+        /(bg|text|border)-(transparent|gray|fuchsia|white|yellow|purple|red|blue|teal|black|green|indigo|orange|pink)/,
+    },
+    {
+      pattern: /(rounded)-(none|sm|md|lg|xl)/,
+    },
+  ],
   borderWidth: {
     DEFAULT: "1px",
     0: "0",

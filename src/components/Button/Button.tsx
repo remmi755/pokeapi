@@ -4,10 +4,11 @@ import cn from "classnames";
 
 import IconStar from "../Icons/IconStar";
 import ChevronDown from "../Icons/ChevronDown";
+import { ReactElement } from "react";
 
 export interface ButtonProps {
   type: "button" | "reset" | "submit";
-  text: string;
+  text: string | ReactElement;
   variant: string;
   size: string;
   disabled?: boolean;

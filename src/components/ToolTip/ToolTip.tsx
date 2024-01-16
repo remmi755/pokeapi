@@ -22,7 +22,7 @@ const ToolTip: React.FC<ToolTipProps> = ({ text, children }) => {
     >
       {children}
       {showToolTip && (
-        <div className="absolute rounded-md bg-gray-100 px-2.5 py-0.5 -top-6 left-3">
+        <div className="absolute rounded-md bg-gray-100 px-2.5 py-0.5 -top-6 left-5">
           {text}
         </div>
       )}
