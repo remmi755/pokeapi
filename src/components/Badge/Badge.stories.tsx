@@ -31,18 +31,6 @@ export default {
       options: ["none", "sm", "md", "xl"],
       control: { type: "radio" },
     },
-    // isDismiss: {
-    //   type: "boolean",
-    //   defaultValue: "false",
-    //   options: ["false", "true"],
-    //   control: { type: "radio" },
-    // },
-    // isIconStart: {
-    //   type: "boolean",
-    //   defaultValue: "false",
-    //   options: ["false", "true"],
-    //   control: { type: "radio" },
-    // },
     onChange: action("changed"),
   },
   parameters: {

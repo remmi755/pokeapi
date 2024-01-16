@@ -16,18 +16,6 @@ export default {
       options: ["xs", "sm", "base", "lg", "xl"],
       control: { type: "radio" },
     },
-    // disabled: {
-    //   type: Boolean,
-    //   defaultValue: "false",
-    //   options: ["true", "false"],
-    //   control: { type: "radio" },
-    // },
-    // type: {
-    //   type: "string",
-    //   defaultValue: "button",
-    //   options: ["button", "submit", "reset"],
-    //   control: { type: "radio" },
-    // },
     variant: {
       type: "string",
       defaultValue: "primary",
@@ -93,7 +81,6 @@ Secondary.args = {
   text: "Secondary Button",
   variant: "secondary",
   size: "lg",
-  // backgroundColor: "#4cd56c",
 };
 
 export const Text = Template.bind({});
@@ -102,7 +89,6 @@ Text.args = {
   text: "Text Button",
   variant: "text",
   size: "lg",
-  // backgroundColor: "transparent",
 };
 
 export const Outline = Template.bind({});
@@ -111,5 +97,4 @@ Outline.args = {
   text: "Outline Button",
   variant: "outline",
   size: "lg",
-  // backgroundColor: "transparent",
 };

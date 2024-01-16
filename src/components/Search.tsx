@@ -43,7 +43,6 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
           size="base"
           text={
             team.length !== fullTeam ? (
-              // ? `Selected (${team?.length})`
               <p className="flex gap-1">
                 Selected
                 <Badge text={team?.length} color="fuchsia" variant="xl" />
