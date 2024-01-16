@@ -27,22 +27,22 @@ export default {
     },
     variant: {
       type: "string",
-      defaultValue: "sm",
+      defaultValue: "md",
       options: ["none", "sm", "md", "xl"],
       control: { type: "radio" },
     },
-    isDismiss: {
-      type: "boolean",
-      defaultValue: "false",
-      options: ["false", "true"],
-      control: { type: "radio" },
-    },
-    isIconStart: {
-      type: "boolean",
-      defaultValue: "false",
-      options: ["false", "true"],
-      control: { type: "radio" },
-    },
+    // isDismiss: {
+    //   type: "boolean",
+    //   defaultValue: "false",
+    //   options: ["false", "true"],
+    //   control: { type: "radio" },
+    // },
+    // isIconStart: {
+    //   type: "boolean",
+    //   defaultValue: "false",
+    //   options: ["false", "true"],
+    //   control: { type: "radio" },
+    // },
     onChange: action("changed"),
   },
   parameters: {
@@ -56,14 +56,82 @@ export const Default = Template.bind({});
 Default.args = {
   text: "Default",
   color: "gray",
-  isDismiss: true,
   variant: "md",
+  isIconStart: false,
+};
+
+export const Red = Template.bind({});
+Red.args = {
+  text: "Red",
+  color: "red",
+  variant: "md",
+  isIconStart: false,
+  isDismiss: true,
+};
+
+export const Yellow = Template.bind({});
+Yellow.args = {
+  text: "Yellow",
+  color: "yellow",
+  variant: "md",
+  isIconStart: true,
 };
 
 export const Green = Template.bind({});
 Green.args = {
   text: "Green",
   color: "green",
-  isDismiss: false,
   variant: "md",
+  isIconStart: false,
+  isDismiss: true,
+};
+export const Blue = Template.bind({});
+Blue.args = {
+  text: "Blue",
+  color: "blue",
+  variant: "md",
+  isIconStart: false,
+};
+
+export const Indigo = Template.bind({});
+Indigo.args = {
+  text: "Indigo",
+  color: "indigo",
+  variant: "md",
+  isIconStart: true,
+};
+
+export const Purple = Template.bind({});
+Purple.args = {
+  text: "Purple",
+  color: "purple",
+  variant: "md",
+  isIconStart: false,
+  isDismiss: true,
+};
+
+export const Pink = Template.bind({});
+Pink.args = {
+  text: "Pink",
+  color: "pink",
+  variant: "md",
+  isIconStart: false,
+};
+
+export const Dark = Template.bind({});
+Dark.args = {
+  text: "Dark",
+  color: "dark",
+  variant: "md",
+  isIconStart: true,
+  isDismiss: true,
+};
+
+export const Orange = Template.bind({});
+Orange.args = {
+  text: "Orange",
+  color: "orange",
+  variant: "md",
+  isIconStart: true,
+  isDismiss: true,
 };

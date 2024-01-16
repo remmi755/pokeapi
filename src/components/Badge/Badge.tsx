@@ -1,10 +1,9 @@
 import * as React from "react";
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, useState } from "react";
 import cn from "classnames";
 
 export interface BadgeProps {
   text: string | ReactElement;
-  children?: ReactElement;
   color: string;
   isIconStart?: boolean;
   isDismiss?: boolean;
@@ -12,7 +11,6 @@ export interface BadgeProps {
 }
 
 const Badge: React.FC<BadgeProps> = ({
-  children,
   text,
   color,
   isDismiss,
@@ -40,7 +38,6 @@ const Badge: React.FC<BadgeProps> = ({
         <div className={containerStyle}>
           {isIconStart && <div className={startCircleStyle}></div>}
           <p className={textStyle}>{text}</p>
-          {children}
           {isDismiss && (
             <div
               className={`text-${color}-400`}
