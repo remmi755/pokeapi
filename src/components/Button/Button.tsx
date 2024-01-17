@@ -8,7 +8,7 @@ import { ReactElement } from "react";
 
 export interface ButtonProps {
   type: "button" | "reset" | "submit";
-  text: string | ReactElement;
+  text: string;
   variant: string;
   size: string;
   disabled?: boolean;

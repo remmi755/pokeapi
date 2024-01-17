@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ListPokemons from "./ListPokemons.jsx";
-import PokemonCard from "./PokemonCard.jsx";
+import PokemonCard from "./PokemonCard.tsx";
 import Search from "./Search.tsx";
 import axios from "axios";
-import Team from "./Team.jsx";
-import Modal from "./Modal.jsx";
-import UserForm from "./UserForm.jsx";
+import Team from "./Team.js";
+import Modal from "./Modal.tsx";
+import UserForm from "./UserForm.js";
 
 const SelectPokemons = () => {
   const [text, setText] = useState("");

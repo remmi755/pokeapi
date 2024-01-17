@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SelectedPokemonCard from "./SelectedPokemonCard.jsx";
+import SelectedPokemonCard from "./SelectedPokemonCard.tsx";
 import Button from "./Button/Button.tsx";
 
 const Team = ({ team, setTeam }) => {

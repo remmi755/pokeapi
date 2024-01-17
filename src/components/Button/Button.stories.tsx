@@ -1,5 +1,4 @@
-import React from "react";
-import { Meta, Story, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { ButtonProps } from "./Button";
 import { action } from "@storybook/addon-actions";
 import Button from "./Button";
