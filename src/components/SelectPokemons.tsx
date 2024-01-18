@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
-import ListPokemons from "./ListPokemons.jsx";
-import PokemonCard from "./PokemonCard.tsx";
-import Search from "./Search.tsx";
+import * as React from "react";
+import { useEffect, useState } from "react";
+import ListPokemons from "./ListPokemons";
+import PokemonCard from "./PokemonCard";
+import Search from "./Search";
 import axios from "axios";
-import Team from "./Team.js";
-import Modal from "./Modal.tsx";
-import UserForm from "./UserForm.js";
+import Team from "./Team";
+import Modal from "./Modal";
+import UserForm from "./UserForm";
 
 const SelectPokemons = () => {
-  const [text, setText] = useState("");
-  const [pokemons, setPokemons] = useState("");
+  const [text, setText] = useState<string | null>("");
+  const [pokemons, setPokemons] = useState<object[]>([]);
   const [pokemon, setPokemon] = useState("");
-  const [team, setTeam] = useState([]);
+  const [team, setTeam] = useState<object[]>([]);
   const [isShowTeam, setIsShowTeam] = useState(false);
   const [modalFormIsOpen, setModalFormIsOpen] = useState(false);
   const [modalTeamIsOpen, setModalTeamIsOpen] = useState(false);
@@ -26,13 +27,13 @@ const SelectPokemons = () => {
     fetchPokemons();
   }, []);
 
-  const fetchSinglePokemon = async (name) => {
+  const fetchSinglePokemon = async (name: string) => {
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
     setPokemon(res.data);
     return res.data;
   };
 
-  const showPokemon = async (pokemonName) => {
+  const showPokemon = async (pokemonName: string) => {
     if (team?.length === fullTeam) {
       return;
     }
@@ -40,7 +41,9 @@ const SelectPokemons = () => {
   };
 
   const addToTeam = async (pokemon) => {
-    const isInTeam = team?.find((member) => member.name === pokemon.name);
+    const isInTeam = team?.find(
+      (member: { name: string }) => member.name === pokemon.name
+    );
 
     if (team?.length < fullTeam && !isInTeam) {
       const newTeam = [...team, pokemon];
@@ -52,6 +55,9 @@ const SelectPokemons = () => {
     setModalFormIsOpen(false);
     setModalTeamIsOpen(true);
   };
+
+  console.log(pokemons);
+  console.log(pokemon);
 
   return (
     <div className="h-[100vh]">

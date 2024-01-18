@@ -1,22 +1,22 @@
 import * as React from "react";
-import { ReactElement, useState } from "react";
+import { ReactElement, ReactNode, useState } from "react";
 import cn from "classnames";
 
 export interface BadgeProps {
-  text: string | ReactElement;
+  text: ReactNode;
   color: string;
   isIconStart?: boolean;
   isDismiss?: boolean;
   variant: string;
 }
 
-const Badge: React.FC<BadgeProps> = ({
+const Badge = ({
   text,
   color,
   isDismiss,
   variant,
   isIconStart,
-}) => {
+}: BadgeProps) => {
   const [showBadge, setShowBadge] = useState(true);
 
   const containerStyle = cn(

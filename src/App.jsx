@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import SelectPokemons from "./components/SelectPokemons.tsx";
-import Header from "./components/Header.jsx";
+import Header from "./components/Header.tsx";
 import ThemeSwitcher from "./components/ThemeSwitcher.tsx";
 
 function App() {

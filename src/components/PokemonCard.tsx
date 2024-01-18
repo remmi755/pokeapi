@@ -1,15 +1,35 @@
-import React from "react";
-import Button from "./Button/Button.tsx";
+import * as React from "react";
+import Button from "./Button/Button";
 
-const PokemonCard = ({ pokemon, addToTeam, team, fullTeam }) => {
+type Pokemon = {
+  name: string;
+  url: string;
+  sprites: object;
+};
+
+export interface PokemonCardProps {
+  pokemon: Pokemon;
+  addToTeam: (pokemon: Pokemon) => void;
+  team: Pokemon[];
+  fullTeam: number;
+}
+
+const PokemonCard = ({
+  pokemon,
+  addToTeam,
+  team,
+  fullTeam,
+}: PokemonCardProps) => {
   const isEmpty = Object.keys(pokemon);
+
+  console.log(pokemon);
 
   return (
     <div className="p-2 ring-2 w-full ring-teal-300 rounded-md  bg-blue-200">
       {isEmpty.length ? (
         <img
           className="m-auto"
-          src={pokemon.sprites["front_default"]}
+          src={pokemon?.sprites["front_default"]}
           alt=""
           width={350}
           height={350}

@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import SelectedPokemonCard from "./SelectedPokemonCard.tsx";
-import Button from "./Button/Button.tsx";
+import * as React from "react";
+import { useState } from "react";
+import SelectedPokemonCard from "./SelectedPokemonCard";
+import Button from "./Button/Button";
+
+type Team = {};
+
+export interface TeamProps {
+  team: object;
+  setTeam: () => void;
+}
 
 const Team = ({ team, setTeam }) => {
   const [selectedPokemon, setSelectedPokemon] = useState("");
-
+  console.log(team);
   const removePokemon = (el) => {
     const result = team.filter((pokemon) => pokemon !== el);
     setTeam(result);

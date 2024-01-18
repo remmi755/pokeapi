@@ -1,5 +1,4 @@
-import React from "react";
-import ThemeSwitcher from "./ThemeSwitcher.tsx";
+import * as React from "react";
 
 const Header = () => {
   return (

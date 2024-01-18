@@ -20,7 +20,7 @@ export interface InputProps {
   disabled?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
+const Input = ({
   label,
   toolTipInfo,
   placeholder,
@@ -33,7 +33,7 @@ const Input: React.FC<InputProps> = ({
   name,
   iconEnd,
   disabled,
-}) => {
+}: InputProps) => {
   const styleInformation = cn(
     "w-max",
     errors[name] && errors[name] ? "text-red-500" : "text-gray-500",

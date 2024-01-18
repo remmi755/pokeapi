@@ -5,7 +5,7 @@ export interface ToolTipProps {
   children: ReactElement;
 }
 
-const ToolTip: React.FC<ToolTipProps> = ({ text, children }) => {
+const ToolTip = ({ text, children }: ToolTipProps) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const onMouseEnterHandler = () => {
     setShowToolTip(true);

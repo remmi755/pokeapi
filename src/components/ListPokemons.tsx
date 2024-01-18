@@ -1,6 +1,18 @@
-import React from "react";
+import * as React from "react";
 
-const ListPokemons = ({ pokemons, text, showPokemon }) => {
+type Pokemon = {
+  name: string;
+  url: string;
+};
+
+export interface ListPokemonsProps {
+  pokemon?: Pokemon;
+  pokemons: Pokemon[];
+  text: string;
+  showPokemon: (el: string) => void;
+}
+
+const ListPokemons = ({ pokemons, text, showPokemon }: ListPokemonsProps) => {
   const filteredData =
     pokemons &&
     pokemons.map((el) => {
@@ -10,6 +22,8 @@ const ListPokemons = ({ pokemons, text, showPokemon }) => {
         return el.name;
       }
     });
+
+  console.log(pokemons);
 
   return (
     <ul className="flex flex-1 flex-col ring-1 ring-teal-200 max-h-[485px] overflow-y-auto bg-[#182237] rounded-md cursor-pointer">

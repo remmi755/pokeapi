@@ -5,11 +5,25 @@ import { MagnifyingGlassIcon } from "@heroicons/react/16/solid/index.js";
 import { useForm } from "react-hook-form";
 import Badge from "./Badge/Badge";
 
-const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
+export interface SearchProps {
+  text: string;
+  fullTeam: number;
+  setText: (text: string) => void;
+  team: object[];
+  setModalFormIsOpen: (modalFormIsOpen: boolean) => void;
+}
+
+const Search = ({
+  text,
+  setText,
+  fullTeam,
+  team,
+  setModalFormIsOpen,
+}: SearchProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     mode: "onChange",
   });
@@ -22,7 +36,7 @@ const Search = ({ text, setText, fullTeam, team, setModalFormIsOpen }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         className="flex justify-center"
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => setText((e.target as HTMLInputElement).value)}
       >
         <Input
           toolTipInfo="information about searching"

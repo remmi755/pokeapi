@@ -4,16 +4,27 @@ import cn from "classnames";
 
 import IconStar from "../Icons/IconStar";
 import ChevronDown from "../Icons/ChevronDown";
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 
 export interface ButtonProps {
-  type: "button" | "reset" | "submit";
+  children?: ReactNode;
+  type?: "button" | "reset" | "submit";
   text: string;
   variant: string;
   size: string;
   disabled?: boolean;
   onClick?: () => void;
 }
+
+const children = (text: string): ReactNode => {
+  return (
+    <div className={`flex justify-between items-center `}>
+      <IconStar />
+      <p className="px-1">{text}</p>
+      <ChevronDown />
+    </div>
+  );
+};
 
 const Button: React.FC<ButtonProps> = ({
   type,
@@ -24,16 +35,6 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const btnClass = cn(`button px-2`, `button-${size} button-${variant}`);
-
-  const children = (text: string) => {
-    return (
-      <div className={`flex justify-between items-center `}>
-        <IconStar />
-        <p className="px-1">{text}</p>
-        <ChevronDown />
-      </div>
-    );
-  };
 
   return (
     <button

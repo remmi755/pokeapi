@@ -1,6 +1,14 @@
-import React from "react";
+import * as React from "react";
 
-const Modal = ({ isOpen, onClose, children, width, title }) => {
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  width: string;
+  title: string;
+}
+
+const Modal = ({ isOpen, onClose, children, width, title }: ModalProps) => {
   const onWrapperClick = (e) => {
     if (e.target.classList.contains("modal-wrapper")) {
       onClose();
