@@ -2,7 +2,7 @@ import * as React from "react";
 import { InformationCircleIcon } from "@heroicons/react/16/solid";
 import cn from "classnames";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { ReactNode } from "react";
+import {ReactElement, ReactNode} from "react";
 import ToolTip from "../ToolTip/ToolTip";
 
 export interface InputProps {
@@ -15,7 +15,7 @@ export interface InputProps {
   errors?: string | FieldErrors;
   iconStart?: ReactNode;
   iconEnd?: ReactNode;
-  value?: string;
+  value?: string |ReactElement;
   styling: string;
   disabled?: boolean;
 }

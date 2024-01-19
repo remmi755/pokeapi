@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import ListPokemons from "./ListPokemons";
-import PokemonCard from "./PokemonCard";
+import PokemonCard, { PokemonType } from "./PokemonCard";
 import Search from "./Search";
 import axios from "axios";
 import Team from "./Team";
@@ -10,10 +10,9 @@ import UserForm from "./UserForm";
 
 const SelectPokemons = () => {
   const [text, setText] = useState<string | null>("");
-  const [pokemons, setPokemons] = useState<object[]>([]);
-  const [pokemon, setPokemon] = useState("");
-  const [team, setTeam] = useState<object[]>([]);
-  const [isShowTeam, setIsShowTeam] = useState(false);
+  const [pokemons, setPokemons] = useState<PokemonType[]>([]);
+  const [pokemon, setPokemon] = useState<PokemonType>();
+  const [team, setTeam] = useState<PokemonType[] | null>([]);
   const [modalFormIsOpen, setModalFormIsOpen] = useState(false);
   const [modalTeamIsOpen, setModalTeamIsOpen] = useState(false);
   const fullTeam = 4;
@@ -56,20 +55,15 @@ const SelectPokemons = () => {
     setModalTeamIsOpen(true);
   };
 
-  console.log(pokemons);
-  console.log(pokemon);
-
   return (
     <div className="h-[100vh]">
       <div className="px-10">
         <Search
           text={text}
           setText={setText}
-          setIsShowTeam={setIsShowTeam}
-          isShowTeam={isShowTeam}
+          fullTeam={fullTeam}
           team={team}
           setModalFormIsOpen={setModalFormIsOpen}
-          fullTeam={fullTeam}
         />
         <section className="flex mt-4">
           <ListPokemons

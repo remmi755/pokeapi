@@ -9,14 +9,14 @@ import { ReactNode } from "react";
 export interface ButtonProps {
   children?: ReactNode;
   type?: "button" | "reset" | "submit";
-  text: string;
+  text: ReactNode;
   variant: string;
   size: string;
   disabled?: boolean;
   onClick?: () => void;
 }
 
-const children = (text: string): ReactNode => {
+const children = (text: ReactNode): ReactNode => {
   return (
     <div className={`flex justify-between items-center `}>
       <IconStar />

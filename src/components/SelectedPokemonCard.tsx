@@ -1,10 +1,11 @@
 import * as React from "react";
+import { PokemonType } from "./PokemonCard";
 
 export interface SelectedPokemonCardProps {
-  pokemon: Pokemon;
+  pokemon: PokemonType;
   width: number;
   height: number;
-  removePokemon: (el: Pokemon) => void;
+  removePokemon: (el: PokemonType) => void;
 }
 
 const SelectedPokemonCard = ({
@@ -14,8 +15,6 @@ const SelectedPokemonCard = ({
   removePokemon,
 }: SelectedPokemonCardProps) => {
   const isEmpty = Object.keys(pokemon);
-
-  console.log(pokemon);
 
   return (
     <div className=" flex ring-2 w-full ring-teal-300 rounded-md  bg-blue-200 hover:ring-4 hover:ring-teal-500 hover:bg-blue-300 cursor-pointer">

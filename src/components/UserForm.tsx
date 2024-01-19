@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import Button from "./Button/Button.tsx";
-import Input from "./Input/Input.tsx";
-import IconStar from "./Icons/IconStar.js";
+import Button from "./Button/Button";
+import Input from "./Input/Input";
+import IconStar from "./Icons/IconStar";
 
 const UserForm = ({ showTeam }) => {
   const {

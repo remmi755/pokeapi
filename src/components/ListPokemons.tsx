@@ -1,13 +1,9 @@
 import * as React from "react";
-
-type Pokemon = {
-  name: string;
-  url: string;
-};
+import { PokemonType } from "./PokemonCard";
 
 export interface ListPokemonsProps {
-  pokemon?: Pokemon;
-  pokemons: Pokemon[];
+  pokemon?: PokemonType;
+  pokemons: PokemonType[];
   text: string;
   showPokemon: (el: string) => void;
 }
@@ -22,8 +18,6 @@ const ListPokemons = ({ pokemons, text, showPokemon }: ListPokemonsProps) => {
         return el.name;
       }
     });
-
-  console.log(pokemons);
 
   return (
     <ul className="flex flex-1 flex-col ring-1 ring-teal-200 max-h-[485px] overflow-y-auto bg-[#182237] rounded-md cursor-pointer">

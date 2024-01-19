@@ -2,17 +2,15 @@ import * as React from "react";
 import { useState } from "react";
 import SelectedPokemonCard from "./SelectedPokemonCard";
 import Button from "./Button/Button";
-
-type Team = {};
+import { PokemonType } from "./PokemonCard";
 
 export interface TeamProps {
-  team: object;
-  setTeam: () => void;
+  team: PokemonType[];
+  setTeam: (result: PokemonType[] | null) => void;
 }
 
-const Team = ({ team, setTeam }) => {
-  const [selectedPokemon, setSelectedPokemon] = useState("");
-  console.log(team);
+const Team = ({ team, setTeam }: TeamProps) => {
+  const [selectedPokemon, setSelectedPokemon] = useState<PokemonType>(null);
   const removePokemon = (el) => {
     const result = team.filter((pokemon) => pokemon !== el);
     setTeam(result);
@@ -26,7 +24,6 @@ const Team = ({ team, setTeam }) => {
             <li key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
               <SelectedPokemonCard
                 pokemon={pokemon}
-                team={team}
                 width={100}
                 height={100}
                 removePokemon={removePokemon}
@@ -43,7 +40,6 @@ const Team = ({ team, setTeam }) => {
                 pokemon={selectedPokemon}
                 width={50}
                 height={50}
-                team={team}
                 removePokemon={removePokemon}
               />
             </div>
@@ -58,7 +54,7 @@ const Team = ({ team, setTeam }) => {
             text="Save"
             variant="primary"
             size="xl"
-            onClick={() => setSelectedPokemon("")}
+            onClick={() => setSelectedPokemon(null)}
           />
         </div>
       </div>
