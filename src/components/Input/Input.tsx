@@ -1,22 +1,21 @@
 import * as React from "react";
 import { InformationCircleIcon } from "@heroicons/react/16/solid";
 import cn from "classnames";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import {ReactElement, ReactNode} from "react";
+import { ReactNode } from "react";
 import ToolTip from "../ToolTip/ToolTip";
 
 export interface InputProps {
-  name?: string;
+  name: string;
   toolTipInfo?: string;
   label?: string;
   type?: string;
   placeholder?: string;
-  register?: UseFormRegister<FieldValues>;
-  errors?: string | FieldErrors;
+  register: any;
+  errors?: any;
   iconStart?: ReactNode;
   iconEnd?: ReactNode;
-  value?: string |ReactElement;
-  styling: string;
+  value?: any;
+  styling?: string;
   disabled?: boolean;
 }
 
@@ -60,31 +59,33 @@ const Input = ({
           </div>
           <div className={styleIconStart}>{iconStart}</div>
           <div className="absolute w-4 h-4 top-11 left-96 -ml-3">{iconEnd}</div>
-          <input
-            {...register(`${name}`, {
-              required: "Value is required",
-              minLength: {
-                value: 2,
-                message: "MinLength 2 characters.",
-              },
-              maxLength: {
-                value: 12,
-                message: "MaxLength 12 characters.",
-              },
-              pattern: {
-                value: /^[A-Za-z]+$/i,
-                message: "This input is character only.",
-              },
-            })}
-            disabled={disabled}
-            type={type}
-            name={name}
-            value={value}
-            placeholder={placeholder}
-            className={`input input-styling-${
-              errors[name] && errors[name] ? "validation" : styling
-            }`}
-          />
+          {register && name && (
+            <input
+              {...register(`${name}`, {
+                required: "Value is required",
+                minLength: {
+                  value: 2,
+                  message: "MinLength 2 characters.",
+                },
+                maxLength: {
+                  value: 12,
+                  message: "MaxLength 12 characters.",
+                },
+                pattern: {
+                  value: /^[A-Za-z]+$/i,
+                  message: "This input is character only.",
+                },
+              })}
+              disabled={disabled}
+              type={type}
+              name={name}
+              value={value}
+              placeholder={placeholder}
+              className={`input input-styling-${
+                errors[name] && errors[name] ? "validation" : styling
+              }`}
+            />
+          )}
           <p className={styleInformation}>
             {errors[name] ? errors[name].message : "Enter value"}
           </p>

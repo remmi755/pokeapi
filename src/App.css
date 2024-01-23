@@ -2,12 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+ /*@apply bg-gray-300;*/
+ /* background-color: skyblue;*/
+  background-color: #151c2c;
+}
+
 #root {
   min-width: 960px;
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  /*background: #151c2c;*/
+
   --bgSoft: #182237;
   --text: white;
   --textSoft: #b7bac1;
@@ -23,8 +29,11 @@
   background-color: #151c2c;
 }
 
+.light{
+  background-color: skyblue;
+}
+
 body {
-  /*background-color: #151c2c;*/
   color: white;
 }
 
@@ -34,13 +43,6 @@ a {
 }
 
 @layer components {
-  App{
-    @apply flex items-center justify-center min-h-screen bg-gray-50
-  }
-  .btn {
-    @apply flex gap-2 items-center justify-center py-2 px-4 font-semibold shadow-md rounded-lg
-  }
-
   .modal {
     @apply fixed top-0 left-0 w-full h-full bg-gray-400/75 overflow-hidden overflow-y-auto z-50
   }
@@ -50,10 +52,6 @@ a {
   .modal-content {
     @apply relative m-5 w-max p-8 rounded-2xl bg-[#182237] translate-y-[-50px] transition-opacity ease-in duration-300
   }
-
-  /*.modal-content {*/
-  /*  @apply relative m-5 w-max p-8 rounded-2xl bg-white text-gray-500 translate-y-[-50px] transition-opacity ease-in duration-300*/
-  /*}*/
   .modal-close-button {
     @apply absolute top-9 right-6 w-[30px] h-[30px] p-0 bg-transparent
   }

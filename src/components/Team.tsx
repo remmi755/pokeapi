@@ -5,15 +5,19 @@ import Button from "./Button/Button";
 import { PokemonType } from "./PokemonCard";
 
 export interface TeamProps {
-  team: PokemonType[];
+  team: PokemonType[] | null;
   setTeam: (result: PokemonType[] | null) => void;
 }
 
 const Team = ({ team, setTeam }: TeamProps) => {
-  const [selectedPokemon, setSelectedPokemon] = useState<PokemonType>(null);
-  const removePokemon = (el) => {
-    const result = team.filter((pokemon) => pokemon !== el);
-    setTeam(result);
+  const [selectedPokemon, setSelectedPokemon] = useState<PokemonType | null>(
+    null
+  );
+  const removePokemon = (el: PokemonType) => {
+    const result = team?.filter((pokemon) => pokemon !== el);
+    if (result !== undefined) {
+      setTeam(result);
+    }
   };
 
   return (

@@ -13,7 +13,7 @@ export interface ButtonProps {
   variant: string;
   size: string;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (() => void) | any;
 }
 
 const children = (text: ReactNode): ReactNode => {

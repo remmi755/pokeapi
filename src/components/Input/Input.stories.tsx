@@ -36,7 +36,7 @@ export default {
 const Template: StoryFn<InputProps> = (args) => {
   const methods = useForm();
   const { register } = methods;
-  return <Input register={register} {...args} />;
+  return <Input {...args} register={register} />;
 };
 
 export const Default = Template.bind({});

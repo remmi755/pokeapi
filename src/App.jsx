@@ -5,13 +5,6 @@ import Header from "./components/Header.tsx";
 import ThemeSwitcher from "./components/ThemeSwitcher.tsx";
 
 function App() {
-  // const removeMember = (el) => {
-  //   const result = team.filter((member) => member !== el);
-  //   setTeam(result);
-  // };
-
-  // const isEmpty = Object.keys(pokemon);
-
   return (
     <div className="relative">
       <div className="flex absolute top-6 right-2 justify-end items-center mr-8 mb-2">

@@ -9,8 +9,8 @@ export interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, children, width, title }: ModalProps) => {
-  const onWrapperClick = (e) => {
-    if (e.target.classList.contains("modal-wrapper")) {
+  const onWrapperClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if ((event.target as Element).classList.contains("modal-wrapper")) {
       onClose();
     }
   };

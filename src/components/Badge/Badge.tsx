@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 import cn from "classnames";
 
 export interface BadgeProps {

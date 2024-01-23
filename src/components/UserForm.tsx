@@ -1,22 +1,28 @@
 import * as React from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "./Button/Button";
 import Input from "./Input/Input";
 import IconStar from "./Icons/IconStar";
 
-const UserForm = ({ showTeam }) => {
+export type FormValues = {
+  name: string;
+  lastname: string;
+  search: string;
+};
+
+const UserForm = ({ showTeam }: any) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm<FormValues>({ mode: "onChange" });
 
-  function onSubmit(data) {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
     if (isValid) {
       showTeam();
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,17 +1,22 @@
 import * as React from "react";
 import Button from "./Button/Button";
+export type SpritesType = {
+  back_default: string;
+  back_female: string;
+  front_default: string;
+};
 
 export type PokemonType = {
   id: number | string;
   name: string;
   url: string;
-  sprites: object;
+  sprites: SpritesType;
 };
 
 export interface PokemonCardProps {
   pokemon: PokemonType;
   addToTeam: (pokemon: PokemonType) => void;
-  team: PokemonType[];
+  team: PokemonType[] | null;
   fullTeam: number;
 }
 
@@ -40,10 +45,10 @@ const PokemonCard = ({
       <h1 className="text-5xl text-teal-700 font-bold">{pokemon.name}</h1>
       <div className="mt-4 p-2">
         <Button
-          disabled={team.length === fullTeam}
+          disabled={team?.length === fullTeam}
           size="base"
           text={team?.length === fullTeam ? "Full Team" : " Add to Team"}
-          variant={team.length === fullTeam ? "secondary" : "primary"}
+          variant={team?.length === fullTeam ? "secondary" : "primary"}
           onClick={() => addToTeam(pokemon)}
         >
           {team?.length === fullTeam ? "Full Team" : " Add to Team"}

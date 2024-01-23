@@ -2,32 +2,34 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 
 const ThemeSwitcher = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [lightMode, setLightMode] = useState<boolean>(true);
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem("darkMode") === "true";
-    setDarkMode(isDarkMode);
+    const isLightMode = localStorage.getItem("lightMode") === "true";
+    setLightMode(isLightMode);
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("darkMode", darkMode);
-  }, [darkMode]);
+    document.documentElement.classList.toggle("light", lightMode);
+    if (lightMode) {
+      localStorage.setItem("lightMode", "lightMode");
+    }
+  }, [lightMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
+    setLightMode((prevMode) => !prevMode);
   };
 
   return (
     <button
       onClick={toggleDarkMode}
       className={`px-4 py-2 rounded-full ${
-        darkMode ? "bg-yellow-400" : "bg-gray-800"
+        lightMode ? "bg-gray-800" : "bg-yellow-400"
       } ${
-        darkMode ? "text-gray-900" : "text-white"
+        lightMode ? "text-white" : "text-gray-900"
       } transition-colors duration-200`}
     >
-      {darkMode ? "Light Mode" : "Dark Mode"}
+      {lightMode ? "Dark Mode" : "Light Mode"}
     </button>
   );
 };

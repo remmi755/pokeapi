@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactElement, useState } from "react";
 export interface ToolTipProps {
-  text: string;
+  text: string | undefined;
   children: ReactElement;
 }
 

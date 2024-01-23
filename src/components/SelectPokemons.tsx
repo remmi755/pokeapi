@@ -32,20 +32,20 @@ const SelectPokemons = () => {
     return res.data;
   };
 
-  const showPokemon = async (pokemonName: string) => {
+  const showPokemon = async (pokemonName: string): Promise<string> => {
     if (team?.length === fullTeam) {
-      return;
+      return "";
     }
     return await fetchSinglePokemon(pokemonName);
   };
 
-  const addToTeam = async (pokemon) => {
+  const addToTeam = async (pokemon: PokemonType) => {
     const isInTeam = team?.find(
       (member: { name: string }) => member.name === pokemon.name
     );
 
-    if (team?.length < fullTeam && !isInTeam) {
-      const newTeam = [...team, pokemon];
+    if (team && team?.length < fullTeam && !isInTeam) {
+      const newTeam: PokemonType[] = [...team, pokemon];
       setTeam(newTeam);
     }
   };

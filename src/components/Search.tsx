@@ -4,31 +4,33 @@ import Input from "../components/Input/Input";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid/index.js";
 import { useForm } from "react-hook-form";
 import Badge from "./Badge/Badge";
+import { PokemonType } from "./PokemonCard";
+import { FormValues } from "./UserForm";
 
 export interface SearchProps {
-  text: string;
+  text: string | null;
   fullTeam: number;
   setText: (text: string) => void;
-  team: object[];
+  team: PokemonType[] | null;
   setModalFormIsOpen: (modalFormIsOpen: boolean) => void;
 }
 
-const Search = ({
+const Search: React.FC<SearchProps> = ({
   text,
   setText,
   fullTeam,
   team,
   setModalFormIsOpen,
-}: SearchProps) => {
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormValues>({
     mode: "onChange",
   });
 
-  function onSubmit(data) {
+  function onSubmit(data: { search: string }) {
     console.log(data);
   }
 
@@ -56,7 +58,7 @@ const Search = ({
           type="button"
           size="base"
           text={
-            team.length !== fullTeam ? (
+            team?.length !== fullTeam ? (
               <p className="flex gap-1">
                 Selected
                 <Badge text={team?.length} color="fuchsia" variant="xl" />
@@ -65,7 +67,7 @@ const Search = ({
               "Show Team"
             )
           }
-          variant={team.length === fullTeam ? "secondary" : "primary"}
+          variant={team?.length === fullTeam ? "secondary" : "primary"}
           onClick={
             team?.length === fullTeam ? () => setModalFormIsOpen(true) : null
           }

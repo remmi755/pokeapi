@@ -4,8 +4,8 @@ import { PokemonType } from "./PokemonCard";
 export interface ListPokemonsProps {
   pokemon?: PokemonType;
   pokemons: PokemonType[];
-  text: string;
-  showPokemon: (el: string) => void;
+  text: string | null;
+  showPokemon: (pokemonName: string) => Promise<string>;
 }
 
 const ListPokemons = ({ pokemons, text, showPokemon }: ListPokemonsProps) => {
@@ -14,7 +14,7 @@ const ListPokemons = ({ pokemons, text, showPokemon }: ListPokemonsProps) => {
     pokemons.map((el) => {
       if (text === "") {
         return el.name;
-      } else if (el.name.includes(text.toLowerCase())) {
+      } else if (text && el.name.includes(text?.toLowerCase())) {
         return el.name;
       }
     });
@@ -29,7 +29,7 @@ const ListPokemons = ({ pokemons, text, showPokemon }: ListPokemonsProps) => {
           <li
             className="px-2 text-teal-700 text-2xl font-bold w-45 hover:bg-blue-200 "
             key={index}
-            onClick={() => showPokemon(el)}
+            onClick={() => showPokemon(el as string)}
           >
             {el}
           </li>

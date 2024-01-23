@@ -47,7 +47,7 @@ Primary.args = {
 };
 
 export const Size = {
-  render: (args) => (
+  render: (args: ButtonProps) => (
     <div className="flex justify-between items-start gap-8 p-2 m-auto">
       <div className="flex flex-col">
         <label className="text-center text-black mb-2">XS</label>
